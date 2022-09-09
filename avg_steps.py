@@ -1,25 +1,3 @@
-
-# import csv
-
-
-# infile = open('steps.csv', 'r')
-# outfile = open('avg_steps.csv', 'w')
-
-
-# csvfile = csv.reader(infile, delimiter=',')
-# writer = csv.writer(outfile, delimiter=',')
-
-# next(csvfile)
-
-# for record in csvfile:
-#     month = int(record[0])
-#     steps = int(record[1])
-#     month_value = 1
-#     if month == month_value:
-#         i = 0
-#         total = i + steps
-#     else:
-#         month_value += 1
 import csv
 
 infile = open('steps.csv', 'r')
@@ -31,17 +9,17 @@ writer = csv.writer(outfile, delimiter=',')
 
 next(csvfile)
 
-month = '1' #this is to start your month where you need it
-total = 0 #running total
-count = 0 #day counter
+month = '1' 
+total = 0 
+count = 0
 
 
 
 for record in csvfile:
-    if month == record[0]: #you can cut out a line of code by doing it just like this
+    if month == record[0]: 
         steps = int(record[1])
-        total += steps #you have to convert the csv data to an integer, it starts as a string
-        count += 1 #this will tally up as long as the day exists in the right month
+        total += steps 
+        count += 1 
         
         
         #month names
@@ -75,18 +53,15 @@ for record in csvfile:
         
         writer.writerow([month_name, int(avg_steps)])
 
-        #set the month to the next month
         month = record[0]
 
-        #reinitialize your variable. account for the fact if you are in this section of your code, it is the first day of the NEXT month
         total = 0
         count = 0
 
-#you need some code here to write the data for december
 month = '12'
-if month == record[0]: #you can cut out a line of code by doing it just like this
+if month == record[0]: 
         steps = int(record[1])
-        total += steps #you have to convert the csv data to an integer, it starts as a string
+        total += steps 
         count += 1
         avg_steps = total / count   
         writer.writerow(['December', int(avg_steps)])
